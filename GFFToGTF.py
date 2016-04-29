@@ -11,19 +11,19 @@ import string
 from sets import Set
 import math
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s gff JGI|GFF3|GiardiaDB outfile ' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s gff JGI|GFF3|GiardiaDB outfile ' % argv[0]
         print '\tNote: for simplicity, the script will only output exons and CDS/UTR annotations'
         sys.exit(1)
 
-    GFF = sys.argv[1]
-    GTF = sys.argv[3]
+    GFF = argv[1]
+    GTF = argv[3]
 
     GeneDict={}
     outfile = open(GTF, 'w')
-    if sys.argv[2] == 'JGI':
+    if argv[2] == 'JGI':
         linelist=open(GFF)
         for line in linelist:
             if line.startswith('#'):
@@ -81,7 +81,7 @@ def run():
             outline = outline + fields[7] + '\t'
             outline = outline + 'gene_id "' + geneID + '"; transcript_id "' + transcriptID + '"; gene_name "' + geneName + '"; transcript_name "' + transcriptName + '"; gene_type "' + gBT + '";'
             outfile.write(outline + '\n')
-    if sys.argv[2] == 'GFF3':
+    if argv[2] == 'GFF3':
         linelist=open(GFF)
         GeneTypeDict = {}
         TranscriptParentDict = {}
@@ -126,7 +126,7 @@ def run():
             outline = outline + fields[7] + '\t'
             outline = outline + 'gene_id "' + geneID + '"; transcript_id "' + transcriptID + '"; gene_name "' + geneName + '"; transcript_name "' + transcriptName + '"; gene_type "' + gBT + '";'
             outfile.write(outline + '\n')
-    if sys.argv[2] == 'GiardiaDB':
+    if argv[2] == 'GiardiaDB':
         linelist=open(GFF)
         GeneTypeDict = {}
         TranscriptParentDict = {}
@@ -175,4 +175,5 @@ def run():
 
     outfile.close()
    
-run()
+if __name__ == '__main__':
+    main(sys.argv)

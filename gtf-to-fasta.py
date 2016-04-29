@@ -28,19 +28,19 @@ try:
 except:
 	pass
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 4:
-        print 'usage: python %s genome gtf outfilename [-polyA length]' % sys.argv[0]
+    if len(argv) < 4:
+        print 'usage: python %s genome gtf outfilename [-polyA length]' % argv[0]
         sys.exit(1)
 
-    genome = sys.argv[1]
-    gtf=sys.argv[2]
-    outputfilename = sys.argv[3]
+    genome = argv[1]
+    gtf=argv[2]
+    outputfilename = argv[3]
     doPolyA=False
-    if '-polyA' in sys.argv:
+    if '-polyA' in argv:
         doPolyA=True
-        tailsize=int(sys.argv[sys.argv.index('-polyA')+1])
+        tailsize=int(argv[argv.index('-polyA')+1])
         tail=''
         for i in range(tailsize):
             tail=tail+'A'
@@ -128,5 +128,6 @@ def run():
 
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

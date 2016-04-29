@@ -20,17 +20,17 @@ def overlap(left1,right1,left2,right2):
 
     return overlapOrNot
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s gtf [single | merge] outfilename' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s gtf [single | merge] outfilename' % argv[0]
         print '       Note: monoexonic genes will not be outputted'
         print '       merge option not done yet'
         sys.exit(1)
 
-    gtf = sys.argv[1]
-    MergeOrNot = sys.argv[2]
-    outfilename = sys.argv[3]
+    gtf = argv[1]
+    MergeOrNot = argv[2]
+    outfilename = argv[3]
 
     GeneDict={}
 
@@ -141,5 +141,6 @@ def run():
 
     outfile.close()
         
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

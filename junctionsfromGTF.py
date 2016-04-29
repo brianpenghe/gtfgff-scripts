@@ -11,14 +11,14 @@ import string
 import math
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s gtf outfilename' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s gtf outfilename' % argv[0]
         sys.exit(1)
 
-    gtf = sys.argv[1]
-    outfilename = sys.argv[2]
+    gtf = argv[1]
+    outfilename = argv[2]
 
     outfile = open(outfilename, 'w')
 
@@ -70,5 +70,6 @@ def run():
 
     outfile.close()
         
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

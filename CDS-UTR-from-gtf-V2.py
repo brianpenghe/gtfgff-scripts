@@ -10,15 +10,15 @@ import sys
 import string
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s gtf outfilename' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s gtf outfilename' % argv[0]
         print '\tNote: the script relies on the GTF file containing CDS annotations, but explicit UTR annotations are not necessary; also, it will only look at entries in the GTF file which contain the phrase "protein_coding"'
         sys.exit(1)
 
-    inputfilename = sys.argv[1]
-    outfilename = sys.argv[2]
+    inputfilename = argv[1]
+    outfilename = argv[2]
 
     listoflines = open(inputfilename)
     TranscriptDict={}
@@ -160,5 +160,6 @@ def run():
 
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

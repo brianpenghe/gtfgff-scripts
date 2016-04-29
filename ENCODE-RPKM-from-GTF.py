@@ -11,16 +11,16 @@ import math
 import random
 import string
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s annotaiton_gtf gtf outfilename' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s annotaiton_gtf gtf outfilename' % argv[0]
         print '\t use - to read the gtf file from stdin'
         sys.exit(1)
 
-    annotation_gtf = sys.argv[1]
-    gtf=sys.argv[2]
-    outputfilename = sys.argv[3]
+    annotation_gtf = argv[1]
+    gtf=argv[2]
+    outputfilename = argv[3]
 
     lineslist = open(annotation_gtf)
     GeneDict={}
@@ -67,5 +67,6 @@ def run():
 
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

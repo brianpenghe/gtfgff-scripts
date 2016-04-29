@@ -10,17 +10,17 @@ import sys
 import numpy
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 5:
-        print 'usage: python %s input GeneID/NameFieldID name|geneID gtf outfilename' % sys.argv[0]
+    if len(argv) < 5:
+        print 'usage: python %s input GeneID/NameFieldID name|geneID gtf outfilename' % argv[0]
         sys.exit(1)
 
-    input = sys.argv[1]
-    fieldID = int(sys.argv[2])
-    nameOrID = sys.argv[3]
-    gtf = sys.argv[4]
-    outfilename = sys.argv[5]
+    input = argv[1]
+    fieldID = int(argv[2])
+    nameOrID = argv[3]
+    gtf = argv[4]
+    outfilename = argv[5]
 
     WantedDict={}
 
@@ -47,4 +47,5 @@ def run():
             outfile.write(line)
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)

@@ -15,27 +15,27 @@ try:
 except:
 	pass
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 2:
-        print 'usage: python %s inputfilename outfilename [-only middle | first | last]' % sys.argv[0]
+    if len(argv) < 2:
+        print 'usage: python %s inputfilename outfilename [-only middle | first | last]' % argv[0]
         sys.exit(1)
 
-    inputfilename = sys.argv[1]
-    outputfilename = sys.argv[2]
+    inputfilename = argv[1]
+    outputfilename = argv[2]
     doSkip=False
     doMiddle=False
     doFirst=False
     doLast=False
-    if '-only' in sys.argv:
+    if '-only' in argv:
         doSkip=True
-        if sys.argv[sys.argv.index('-only') + 1]=='middle':
+        if argv[argv.index('-only') + 1]=='middle':
             doMiddle=True
             print 'Will skip first exons'
-        if sys.argv[sys.argv.index('-only') + 1]=='first':
+        if argv[argv.index('-only') + 1]=='first':
             doFirst=True
             print 'Will only output first exons (skipping exons that are both first and middle)'
-        if sys.argv[sys.argv.index('-only') + 1]=='last':
+        if argv[argv.index('-only') + 1]=='last':
             doLast=True
             print 'Will only output last exons (skipping exons that are both last and middle)'
         ExonDict={}
@@ -111,5 +111,6 @@ def run():
             
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

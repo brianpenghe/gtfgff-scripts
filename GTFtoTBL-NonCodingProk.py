@@ -13,9 +13,9 @@ from sets import Set
 import os
 import subprocess
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 4:
+    if len(argv) < 4:
         print 'usage: python %s GTF locus_tag_prefix start_count_from output [-tRNAScanSE]'
         print '\tonly use this script for prokaryote genomes!!!'
         print '\tthe -tRNAScanSE option tells the script to rename the tRNAs in a way that will make the compliant with tbl2asn'
@@ -23,13 +23,13 @@ def run():
 
 FIX ACCORDING TO http://www.ncbi.nlm.nih.gov/genbank/genome_ncrna_information
 
-    input = sys.argv[1]
-    LT = sys.argv[2]
-    SCF = int(sys.argv[3])
-    outfilename = sys.argv[4]
+    input = argv[1]
+    LT = argv[2]
+    SCF = int(argv[3])
+    outfilename = argv[4]
 
     dotRNAScanSE = False
-    if '-tRNAScanSE' in sys.argv:
+    if '-tRNAScanSE' in argv:
         dotRNAScanSE = True
 
     FeatureDict = {}
@@ -179,4 +179,5 @@ FIX ACCORDING TO http://www.ncbi.nlm.nih.gov/genbank/genome_ncrna_information
 
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
