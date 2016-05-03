@@ -11,20 +11,20 @@ import string
 import math
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 2:
-        print 'usage: python %s gtf outfile [-field ID]' % sys.argv[0]
+    if len(argv) < 2:
+        print 'usage: python %s gtf outfile [-field ID]' % argv[0]
         print '\use the -field option if the bioType is not specified in the optional attributes as gene_type and transcript_type'
         sys.exit(1)
 
-    gtf = sys.argv[1]
-    outfilename = sys.argv[2]
+    gtf = argv[1]
+    outfilename = argv[2]
 
     doField = False
-    if '-field' in sys.argv:
+    if '-field' in argv:
         doField = True
-        BTfieldID = int(sys.argv[sys.argv.index('-field') + 1])
+        BTfieldID = int(argv[argv.index('-field') + 1])
 
     GeneDict={}
 
@@ -73,5 +73,6 @@ def run():
 
     outfile.close()
         
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

@@ -9,24 +9,24 @@
 import sys
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 2:
-        print 'usage: python %s GTF outfilename [-extend bp] [-genetype biotype]' % sys.argv[0]
+    if len(argv) < 2:
+        print 'usage: python %s GTF outfilename [-extend bp] [-genetype biotype]' % argv[0]
         sys.exit(1)
 
-    GTF = sys.argv[1]
-    outputfilename = sys.argv[2]
+    GTF = argv[1]
+    outputfilename = argv[2]
 
     doExtend = False
-    if '-extend' in sys.argv:
+    if '-extend' in argv:
         doExtend = True
-        extension = int(sys.argv[sys.argv.index('-extend')+1])
+        extension = int(argv[argv.index('-extend')+1])
 
     doBT = False
-    if '-genetype' in sys.argv:
+    if '-genetype' in argv:
         doBT = True
-        BT = sys.argv[sys.argv.index('-genetype')+1]
+        BT = argv[argv.index('-genetype')+1]
 
     ExonDict = {}
 
@@ -79,5 +79,6 @@ def run():
             
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

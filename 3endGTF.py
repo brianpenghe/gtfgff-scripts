@@ -11,15 +11,15 @@ import string
 import math
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s gtf length outfilename' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s gtf length outfilename' % argv[0]
         sys.exit(1)
 
-    gtf = sys.argv[1]
-    NewLength = int(sys.argv[2])
-    outfilename = sys.argv[3]
+    gtf = argv[1]
+    NewLength = int(argv[2])
+    outfilename = argv[3]
 
     TranscriptDict={}
     ExonDict={}
@@ -157,5 +157,6 @@ def run():
 
     outfile.close()
         
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

@@ -11,20 +11,20 @@ import string
 import math
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s gtf old-to-new-names outfilename [-genePredictionToGeneName]' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s gtf old-to-new-names outfilename [-genePredictionToGeneName]' % argv[0]
         print '       old-to-new-names format: old <tab> new'
         print '       [-genePredictionToGeneName] will convert attritbutes from "GenePrediction NV18831-RA" to "gene_name "NV18831-RA"; transcript_name "NV18831-RA"; " and keep notes as formatted'
         sys.exit(1)
 
-    gtf = sys.argv[1]
-    old_to_new = sys.argv[2]
-    outfilename = sys.argv[3]
+    gtf = argv[1]
+    old_to_new = argv[2]
+    outfilename = argv[3]
 
     doGPtoGN=False
-    if '-genePredictionToGeneName' in sys.argv:
+    if '-genePredictionToGeneName' in argv:
         doGPtoGN=True
 
     outfile = open(outfilename, 'w')
@@ -56,5 +56,6 @@ def run():
 
     outfile.close()
         
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

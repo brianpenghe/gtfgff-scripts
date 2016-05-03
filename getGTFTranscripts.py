@@ -10,16 +10,16 @@ import sys
 import numpy
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 4:
-        print 'usage: python %s input TranscriptIDFieldID gtf outfilename' % sys.argv[0]
+    if len(argv) < 4:
+        print 'usage: python %s input TranscriptIDFieldID gtf outfilename' % argv[0]
         sys.exit(1)
 
-    input = sys.argv[1]
-    fieldID = int(sys.argv[2])
-    gtf = sys.argv[3]
-    outfilename = sys.argv[4]
+    input = argv[1]
+    fieldID = int(argv[2])
+    gtf = argv[3]
+    outfilename = argv[4]
 
     WantedDict={}
 
@@ -43,4 +43,5 @@ def run():
             outfile.write(line)
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)

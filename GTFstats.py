@@ -11,26 +11,26 @@ import string
 from sets import Set
 import math
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 2:
-        print 'usage: python %s gtf outfile_prefix [-field1BT] [-JGI] [-GFF3]' % sys.argv[0]
+    if len(argv) < 2:
+        print 'usage: python %s gtf outfile_prefix [-field1BT] [-JGI] [-GFF3]' % argv[0]
         print '\tuse the -JGI option for files in the following format:'
         print '\tscaffold_1      JGI     exon    2338    2360    .       -       .       name "estExt_fgenesh1_pg.C_10001"; transcriptId 129999'
         print '\tuse the -GFF3 option for files in the following format:'
         print '\tchr1    .       exon    3704    4702    .       -       .       ID=LmjF.01.0010:exon:1;Parent=LmjF.01.0010:mRNA;constitutive=1;rank=1'
         sys.exit(1)
 
-    GTF = sys.argv[1]
-    outprefix = sys.argv[2]
+    GTF = argv[1]
+    outprefix = argv[2]
 
     doField1BT = False
-    if '-field1BT' in sys.argv:
+    if '-field1BT' in argv:
         doField1BT = True
 
     GeneDict={}
     linelist=open(GTF)
-    if '-JGI' in sys.argv:
+    if '-JGI' in argv:
         for line in linelist:
             if line.startswith('#'):
                 continue
@@ -59,7 +59,7 @@ def run():
                 GeneDict[(chr,geneID,geneName,transcriptID,transcriptName)]['exons'] = []
                 GeneDict[(chr,geneID,geneName,transcriptID,transcriptName)]['gBT'] = '-'
             GeneDict[(chr,geneID,geneName,transcriptID,transcriptName)]['exons'].append((left,right,strand))
-    elif '-GFF3' in sys.argv:
+    elif '-GFF3' in argv:
         GeneTypeDict = {}
         TranscriptParentDict = {}
         for line in linelist:
@@ -223,4 +223,5 @@ def run():
 
     outfileIS.close()
    
-run()
+if __name__ == '__main__':
+    main(sys.argv)

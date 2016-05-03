@@ -9,15 +9,15 @@
 import sys
 import string
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 2:
+    if len(argv) < 2:
         print 'usage: python %s inputfilename outfilename'
         print '\tThis script will take a GTF file and keep the CDS entries only, converting the "CDS" label to "exon"'
         sys.exit(1)
 
-    inputfilename = sys.argv[1]
-    outputfilename = sys.argv[2]
+    inputfilename = argv[1]
+    outputfilename = argv[2]
 
     outfile = open(outputfilename, 'w')
 
@@ -34,5 +34,6 @@ def run():
  
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

@@ -10,15 +10,15 @@ import sys
 import string
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s GENCODE-gtf outfileprefix' % sys.argv[0]
-        print '	Note: the script will not output UTRs not in the last or first exons' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s GENCODE-gtf outfileprefix' % argv[0]
+        print '	Note: the script will not output UTRs not in the last or first exons' % argv[0]
         sys.exit(1)
 
-    inputfilename = sys.argv[1]
-    outputfilprefix = sys.argv[2]
+    inputfilename = argv[1]
+    outputfilprefix = argv[2]
 
     outfileCDS = open(outputfilprefix+'-CDS', 'w')
     outfileUTR5 = open(outputfilprefix+'-5UTR', 'w')
@@ -93,5 +93,6 @@ def run():
         outfileUTR3.write(outline+'\n')
     outfileUTR3.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

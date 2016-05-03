@@ -11,19 +11,19 @@ import string
 import math
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 5:
-        print 'usage: python %s gtf wanted_list IDfield <genes | transcripts> outfilename' % sys.argv[0]
+    if len(argv) < 5:
+        print 'usage: python %s gtf wanted_list IDfield <genes | transcripts> outfilename' % argv[0]
         print '     Note: only elements entirely in the region will be outputed'
         sys.exit(1)
 
-    gtf = sys.argv[1]
-    wanted = sys.argv[2]
-    fieldID = int(sys.argv[3])
-    GenesOrTranscripts = sys.argv[4]
+    gtf = argv[1]
+    wanted = argv[2]
+    fieldID = int(argv[3])
+    GenesOrTranscripts = argv[4]
 
-    outfile = open(sys.argv[5], 'w')
+    outfile = open(argv[5], 'w')
 
     WantedDict={}
 
@@ -49,5 +49,6 @@ def run():
 
     outfile.close()
         
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

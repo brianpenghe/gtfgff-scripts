@@ -20,26 +20,26 @@ def getReverseComplement(preliminarysequence):
         sequence=sequence+DNA[preliminarysequence[len(preliminarysequence)-i-1]]
     return sequence
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s genome.fa gtf outfilename [-spliced] [-class_code symbol]' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s genome.fa gtf outfilename [-spliced] [-class_code symbol]' % argv[0]
         print '     this script will output the translation of all three possible reading frames; stop codons will be converted to a .'
         sys.exit(1)
 
-    fasta = sys.argv[1]
-    gtf=sys.argv[2]
-    outputfilename = sys.argv[3]
+    fasta = argv[1]
+    gtf=argv[2]
+    outputfilename = argv[3]
 
     doSpliced=False
-    if '-spliced' in sys.argv:
+    if '-spliced' in argv:
         doSpliced=True
         print 'will only look at transciprs with more than one exon'
 
     doClassCode=False
-    if '-class_code' in sys.argv:
+    if '-class_code' in argv:
         doClassCode=True
-        class_code=sys.argv[sys.argv.index('-class_code')+1]
+        class_code=argv[argv.index('-class_code')+1]
         print 'will only look at transciprs if class code', class_code
 
     CodonDict={'GCU':'A', 'GCC':'A', 'GCA':'A', 'GCG':'A',
@@ -253,5 +253,6 @@ def run():
 
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

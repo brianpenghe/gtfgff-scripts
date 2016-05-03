@@ -11,14 +11,14 @@ import math
 import random
 import string
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 2:
-        print 'usage: python %s gtf outfilename' % sys.argv[0]
+    if len(argv) < 2:
+        print 'usage: python %s gtf outfilename' % argv[0]
         sys.exit(1)
 
-    gtf=sys.argv[1]
-    outputfilename = sys.argv[2]
+    gtf=argv[1]
+    outputfilename = argv[2]
 
     TranscriptDict={}
 
@@ -49,5 +49,6 @@ def run():
 
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

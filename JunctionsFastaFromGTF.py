@@ -18,18 +18,18 @@ def getReverseComplement(preliminarysequence):
     return sequence
 
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 4:
-        print 'usage: python %s fasta GTF span outputfilename' % sys.argv[0]
+    if len(argv) < 4:
+        print 'usage: python %s fasta GTF span outputfilename' % argv[0]
         print '\t this script will take a GTF file and output all circularized junctions, i.e. sequences joining a splice sites to all acceptors upstream of it in the transcript'
         print '\t the span parameter referse to the length of sequence on each side, i.e. if you have 75bp reads, you would want to use a span around 60 for stringency purposes'
         sys.exit(1)
 
-    fasta = sys.argv[1]
-    GTF = sys.argv[2]
-    span = int(sys.argv[3])
-    outfilename = sys.argv[4]
+    fasta = argv[1]
+    GTF = argv[2]
+    span = int(argv[3])
+    outfilename = argv[4]
 
     inputdatafile = open(fasta)
     SequenceDict={}
@@ -116,5 +116,6 @@ def run():
 
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

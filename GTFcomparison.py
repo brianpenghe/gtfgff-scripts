@@ -21,15 +21,15 @@ def SubChains(N):
 
     return Subsequences
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s gtf1 gtf2 outputfilename' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s gtf1 gtf2 outputfilename' % argv[0]
         sys.exit(1)
 
-    GTF1 = sys.argv[1]
-    GTF2 = sys.argv[2]
-    outfilename = sys.argv[3]
+    GTF1 = argv[1]
+    GTF2 = argv[2]
+    outfilename = argv[3]
 
     TranscriptDict1={}
     linelist=open(GTF1)
@@ -222,4 +222,5 @@ def run():
         
     outfile.close()
    
-run()
+if __name__ == '__main__':
+    main(sys.argv)

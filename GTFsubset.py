@@ -11,18 +11,18 @@ import string
 import math
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 5:
-        print 'usage: python %s gtf chr left right outfilename' % sys.argv[0]
+    if len(argv) < 5:
+        print 'usage: python %s gtf chr left right outfilename' % argv[0]
         print '     Note: only elements entirely in the region will be outputed'
         sys.exit(1)
 
-    gtf = sys.argv[1]
-    TheChr = sys.argv[2]
-    outfilename = sys.argv[5]
-    start = int(sys.argv[3])
-    stop = int(sys.argv[4])
+    gtf = argv[1]
+    TheChr = argv[2]
+    outfilename = argv[5]
+    start = int(argv[3])
+    stop = int(argv[4])
 
     outfile = open(outfilename, 'w')
 
@@ -40,5 +40,6 @@ def run():
 
     outfile.close()
         
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

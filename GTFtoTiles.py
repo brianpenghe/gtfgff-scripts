@@ -15,14 +15,14 @@ try:
 except:
 	pass
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 2:
-        print 'usage: python %s gtf outprefix' % sys.argv[0]
+    if len(argv) < 2:
+        print 'usage: python %s gtf outprefix' % argv[0]
         sys.exit(1)
 
-    inputfilename = sys.argv[1]
-    outprefix = sys.argv[2]
+    inputfilename = argv[1]
+    outprefix = argv[2]
 
     GeneDict = {}
 
@@ -100,5 +100,6 @@ def run():
         outfileGenes.close()
         outfileTranscripts.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

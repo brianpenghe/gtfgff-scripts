@@ -19,40 +19,40 @@ def getReverseComplement(preliminarysequence):
         sequence=sequence+DNA[preliminarysequence[len(preliminarysequence)-j-1]]
     return sequence
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s fasta gtf outfilename [-polyA length] [-fastaChrFieldID ID] [-addChrToGTFchrID] [-noPositionalInformation] [-KeepUundeterminedStrand]' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s fasta gtf outfilename [-polyA length] [-fastaChrFieldID ID] [-addChrToGTFchrID] [-noPositionalInformation] [-KeepUundeterminedStrand]' % argv[0]
         print '\t use the -KeepUundeterminedStrand if the file contains strands specified with a dot; those will be considered to be on the plus strand if the option is on, otherwise they will be skipped'
         sys.exit(1)
 
-    fasta = sys.argv[1]
-    gtf=sys.argv[2]
-    outputfilename = sys.argv[3]
+    fasta = argv[1]
+    gtf=argv[2]
+    outputfilename = argv[3]
     doPolyA=False
-    if '-polyA' in sys.argv:
+    if '-polyA' in argv:
         doPolyA=True
-        tailsize=int(sys.argv[sys.argv.index('-polyA')+1])
+        tailsize=int(argv[argv.index('-polyA')+1])
         tail=''
         for i in range(tailsize):
             tail=tail+'A'
         print 'will add a polyA tail of ', tailsize, 'nt'
 
     doKeepUundeterminedStrand = False
-    if '-KeepUundeterminedStrand' in sys.argv:
+    if '-KeepUundeterminedStrand' in argv:
         doKeepUundeterminedStrand = True
 
     doAddChr=False
-    if '-addChrToGTFchrID' in sys.argv:
+    if '-addChrToGTFchrID' in argv:
         doAddChr=True
 
     doFastaChrFieldID = False
-    if '-fastaChrFieldID' in sys.argv:
+    if '-fastaChrFieldID' in argv:
         doFastaChrFieldID = True
-        FastaChrFieldID = int(sys.argv[sys.argv.index('-fastaChrFieldID')+1])
+        FastaChrFieldID = int(argv[argv.index('-fastaChrFieldID')+1])
 
     doNoPosInfo=False
-    if '-noPositionalInformation' in sys.argv:
+    if '-noPositionalInformation' in argv:
         doNoPosInfo=True
 
     outfile = open(outputfilename, 'w')
@@ -161,5 +161,6 @@ def run():
 
     outfile.close()
 
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 

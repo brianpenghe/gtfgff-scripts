@@ -11,18 +11,18 @@ import string
 import math
 from sets import Set
 
-def run():
+def main(argv):
 
-    if len(sys.argv) < 3:
-        print 'usage: python %s gtf repeatmasker outfilename' % sys.argv[0]
+    if len(argv) < 3:
+        print 'usage: python %s gtf repeatmasker outfilename' % argv[0]
         print '\tNote: the following repeatMasker format is assumed:'
         print '\t585     2643    40      30      0       chr2LHet        0       328     -368544 -       Copia2_I        LTR     Copia   -2478   1684    1347    1'
         print '\tNote: it is also assumed that the left coordinates of repetitive elements are unique'
         sys.exit(1)
 
-    gtf = sys.argv[1]
-    RM = sys.argv[2]
-    outfilename = sys.argv[3]
+    gtf = argv[1]
+    RM = argv[2]
+    outfilename = argv[3]
 
     RepeatDict = {}
     lineslist  = open(RM)
@@ -103,5 +103,6 @@ def run():
 
     outfile.close()
         
-run()
+if __name__ == '__main__':
+    main(sys.argv)
 
