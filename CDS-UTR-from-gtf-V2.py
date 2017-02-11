@@ -3,7 +3,8 @@
 # Last modified 03/08/2013       # 
 #                                #
 # Georgi Marinov                 #
-#                                # 
+# Last modified 02/10/2017       # 
+# Peng He                        #
 ##################################
 
 import sys
@@ -64,7 +65,7 @@ def main(argv):
     print 'finished unputting annotation'
 
     outfile = open(outfilename,'w')
-    outfile.write('#chr\tleft\tright\tstrand\ttype\tgeneID\tgeneName\ttranscriptID\ttranscriptName\t')
+    outfile.write('#chr\tleft\tright\tstrand\ttype\tgeneID\tgeneName\ttranscriptID\ttranscriptName\n')
 
     t=0
     for (geneID,geneName,transcriptID,transcriptName) in TranscriptDict.keys():
